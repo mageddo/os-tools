@@ -25,7 +25,7 @@ jar udp-server-*.jar
 __Send some packets to the server__
 
 ```bash
-echo "it's `date`" > /dev/udp/172.17.0.5/3333
+echo "it's `date`" > /dev/udp/127.0.0.1/3333
 ```
 
 #### Options
