@@ -13,11 +13,12 @@ public class Main {
 		log(String.format("starting at port :%d", getPort(args)));
 
 		final byte[] buff = new byte[getBufferSize(args)];
-		while (!server.isClosed()){
+		while (!server.isClosed() && !Thread.currentThread().isInterrupted()){
 			final DatagramPacket packet = new DatagramPacket(buff, 0, buff.length);
 			server.receive(packet);
 			log(new String(packet.getData(), 0, packet.getLength()));
 		}
+		System.out.println("Bye :)");
 	}
 
 	static int getPort(String[] args) {
@@ -29,6 +30,6 @@ public class Main {
 	}
 
 	static void log(String line){
-		System.out.printf("%s - %s", LocalDateTime.now(), line);
+		System.out.printf("%s - %s%n", LocalDateTime.now(), line);
 	}
 }

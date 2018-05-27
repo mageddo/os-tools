@@ -1,11 +1,19 @@
 Verify simple UDP server for development porpuses
 
-__Features__
+#### Features
 * Setup a UDP server
 * Print all received messages as plain text
 
 
-__Using__
+#### Running
+
+__From docker__
+
+```bash
+docker run -p 3333:3333/udp --name udp-server --rm defreitas/udp-server:latest
+```
+
+__From binary__
 
 Download latest version and run it
 
@@ -14,19 +22,19 @@ jar udp-server-*.jar
 2018-05-27T14:58:29.247 - starting at 3333
 ```
 
-Send some packets to the server
+__Send some packets to the server__
 
 ```bash
-echo "it's `date`" > /dev/udp/127.0.0.1/3333
+echo "it's `date`" > /dev/udp/172.17.0.5/3333
 ```
 
-__Options__
+#### Options
 
 ```bash
 jar udp-server-*.jar <port> <bufferSizeInBytes>
 ``` 
 
-__Build from source__
+### Build from source
 
 ```bash
 ./gradlew clean build && java -jar udp-server/build/libs/udp-server-*.jar 
